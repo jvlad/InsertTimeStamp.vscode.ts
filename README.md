@@ -13,6 +13,8 @@ Here is how it looks after markdown processing:
 ###### Sun Sep 18 15:29:29 IDT 2016
 
 ## Configure shortcuts
+Default shortcut is `Ctrl + f5`  
+
 in your `Code/User/keybindings.json` file add the following:
 ```
 {
