@@ -1,4 +1,3 @@
-![icon](resources/icon.png)
 # Insert Time Stamp
 Quick insertion of unix-shell-like time stamp into Visual Studio Code editor
 
@@ -9,6 +8,9 @@ Quick insertion of unix-shell-like time stamp into Visual Studio Code editor
 
 Here is how it looks after markdown processing:
 ###### Sun Sep 18 15:29:29 IDT 2016
+
+## Install (see on [Market Place](https://marketplace.visualstudio.com/items?itemName=zvlad.inserttimestamp)) 
+This extension is available to download and install from the [Market Place](https://marketplace.visualstudio.com/items?itemName=zvlad.inserttimestamp).
 
 ## Configure shortcuts
 Default shortcut is `ctrl + f5`  
