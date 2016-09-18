@@ -1,8 +1,6 @@
+![icon](resources/icon.png)
 # Insert Time Stamp
-
-## Features
-
-Quick insertion of linux-like time stamp into Visual Studio Code editor.
+Quick insertion of unix-shell-like time stamp into Visual Studio Code editor
 
 ## Example
 ```
