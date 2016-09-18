@@ -20,6 +20,14 @@
         "command": "inserttimestamp.perform",
         "title": "Insert Time Stamp"
       }
+    ],
+    "keybindings": [
+      {
+        "command": "inserttimestamp.perform",
+        "key": "ctrl+f5",
+        "mac": "cmd+f5",
+        "when": "editorTextFocus"
+      }
     ]
   },
   "scripts": {
