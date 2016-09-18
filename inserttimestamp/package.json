@@ -1,0 +1,32 @@
+{
+    "name": "inserttimestamp",
+    "displayName": "InsertTimestamp",
+    "description": "Insert custom formatted date and time to current editor.",
+    "version": "0.0.1",
+    "publisher": "zvlad",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:inserttimestamp.insertsample"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [{
+            "command": "inserttimestamp.insertsample",
+            "title": "Time Stamp. Insert Sample"
+        }]
+    },
+    "scripts": {
+        "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+        "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "typescript": "^1.8.5",
+        "vscode": "^0.11.0"
+    }
+}
