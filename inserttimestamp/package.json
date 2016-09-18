@@ -11,14 +11,21 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:inserttimestamp.insertsample"
+        "onCommand:inserttimestamp.insertsample",
+        "onCommand:inserttimestamp.perform"
     ],
     "main": "./out/src/extension",
     "contributes": {
-        "commands": [{
-            "command": "inserttimestamp.insertsample",
-            "title": "Time Stamp. Insert Sample"
-        }]
+        "commands": [
+            {
+                "command": "inserttimestamp.insertsample",
+                "title": "Time Stamp. Insert Sample"
+            },
+            {
+                "command": "inserttimestamp.perform",
+                "title": "Insert Time Stamp"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "node ./node_modules/vscode/bin/compile",

@@ -14,14 +14,52 @@ export function activate(context: vscode.ExtensionContext) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('inserttimestamp.insertsample', () => {
-        // The code you place here will be executed every time your command is executed
+    let disposable = [
+        vscode.commands.registerCommand('inserttimestamp.insertsample', () => {
+            replaceEditorSelection("We'll do it today!");
+        }),
+        vscode.commands.registerCommand('inserttimestamp.perform', () => {
+            replaceEditorSelection(composeTimeStamp());
+        })
+    ];
+    context.subscriptions.push(...disposable);
+}
 
-        // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World!');
+function composeTimeStamp(): string {
+    let prefix: string = "######"
+    let weekDayName: string = getTodaysWeekDay();
+    let monthName: string;
+    // return "123";
+    return concatWithDelimiter(" ", [prefix, weekDayName]);
+}
+
+function concatWithDelimiter(delimiter: string, stringList: string[]): string {
+    let result: string[] = [];
+    for (var i = 0; i < stringList.length - 1; i++) {
+        result.push(stringList[i]);
+        result.push(delimiter);
+    }
+    result.push(stringList[stringList.length - 1]);
+    return result.join("");
+}
+
+function getTodaysWeekDay(): string {
+    let weekDayList: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let weekDayShortenList: string[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let weekDayNumber: number = new Date().getDay();
+    return (weekDayShortenList[weekDayNumber]);
+}
+
+function replaceEditorSelection(text: string) {
+    const editor = vscode.window.activeTextEditor;
+    const selections = editor.selections;
+
+    editor.edit((editBuilder) => {
+        selections.forEach((selection) => {
+            editBuilder.replace(selection, '');
+            editBuilder.insert(selection.active, text);
+        });
     });
-
-    context.subscriptions.push(disposable);
 }
 
 // this method is called when your extension is deactivated
