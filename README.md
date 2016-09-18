@@ -2,7 +2,7 @@
 
 ## Features
 
-Quick insertion of time stamp into Visual Studio Code editor.
+Quick insertion of linux-like time stamp into Visual Studio Code editor.
 
 ## Example
 ```
@@ -13,7 +13,7 @@ Here is how it looks after markdown processing:
 ###### Sun Sep 18 15:29:29 IDT 2016
 
 ## Configure shortcuts
-Default shortcut is `Ctrl + f5`  
+Default shortcut is `ctrl + f5`  
 
 in your `Code/User/keybindings.json` file add the following:
 ```
@@ -38,6 +38,12 @@ where:
     `Tz` — Time zone abbreviation (3 letters, I am not sure if it is true for any time zone)   
     `yyyy` — year (4 digits)
 
+## License
+Extension licensed under [MIT](./LICENSE)
+
+## Thanks
+To [Nick Roach](https://www.elegantthemes.com/) for the great icon.
+
 ## Author
 Vlad Zamskoi  
-<v.zamskoi@gmail.com>
+Site: [freeraven.com](https://www.freeraven.com/ "Developer website")

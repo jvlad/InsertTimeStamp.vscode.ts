@@ -1,13 +1,14 @@
 {
   "name": "inserttimestamp",
-  "displayName": "InsertTimestamp",
-  "description": "Insert custom formatted date and time to current editor.",
-  "version": "0.0.1",
-  "publisher": "zvlad",
+  "displayName": "Insert Time Stamp",
+  "description": "Insert unix-shell-like date and time to current editor.",
+  "version": "1.0.0",
+  "publisher": "Vlad Zamskoi",
   "engines": {
     "vscode": "^1.5.0"
   },
   "categories": [
+    "Snippets",
     "Other"
   ],
   "activationEvents": [
@@ -41,5 +42,29 @@
   },
   "dependencies": {
     "moment-timezone": "^0.5.5"
-  }
+  },
+  "keywords": [
+    "VSCode",
+    "extension",
+    "timestamp"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jvlad/InsertTimeStamp.vscode.ts"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Vlad Zamskoi",
+    "email": "v.zamskoi@gmail.com",
+    "url": "https://freeraven.com/"
+  },
+  "icon": "./publish/icon.png",
+  "galleryBanner": {
+    "color": "#fafafa",
+    "theme": "light"
+  },
+  "bugs": {
+    "url": "https://github.com/jvlad/InsertTimeStamp.vscode.ts/issues"
+  },
+  "preview": true
 }
