@@ -3,7 +3,7 @@
   "displayName": "Insert Time Stamp",
   "description": "Insert unix-shell-like date and time to current editor.",
   "version": "1.0.0",
-  "publisher": "Vlad Zamskoi",
+  "publisher": "zvlad",
   "engines": {
     "vscode": "^1.5.0"
   },
@@ -58,7 +58,7 @@
     "email": "v.zamskoi@gmail.com",
     "url": "https://freeraven.com/"
   },
-  "icon": "./publish/icon.png",
+  "icon": "publish/icon.png",
   "galleryBanner": {
     "color": "#fafafa",
     "theme": "light"
