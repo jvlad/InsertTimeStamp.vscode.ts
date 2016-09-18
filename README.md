@@ -33,7 +33,7 @@ where:
     `h` — hours (24h format)  
     `mm` — minutes  
     `ss` — seconds  
-    `Tz` — Time zone abbreviation (3 letters, I suppose)
+    `Tz` — Time zone abbreviation (3 letters, I am not sure if it is true for any time zone)   
     `yyyy` — year (4 digits)
 
 ## Author
