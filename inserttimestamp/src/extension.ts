@@ -1,36 +1,35 @@
 'use strict';
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
-
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "inserttimestamp" is now active!');
-
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
-    let disposable = [
-        vscode.commands.registerCommand('inserttimestamp.insertsample', () => {
-            replaceEditorSelection("We'll do it today!");
-        }),
-        vscode.commands.registerCommand('inserttimestamp.perform', () => {
-            replaceEditorSelection(composeTimeStamp());
-        })
-    ];
-    context.subscriptions.push(...disposable);
+function composeTimeStamp(date: Date): string {
+    let prefix: string = "######"
+    let weekDayName: string = getTodayWeekDayName(date);
+    let monthName: string = geTodayMonthName(date);
+    let monthDay: string = date.getDate().toString();
+    let time: string = date.toLocaleTimeString('en-US', { hour12: false });
+    let timeZoneAbbr: string = getTimeZoneAbbreviation();
+    let year: string = date.getFullYear().toString();
+    return concatWithDelimiter(" ", [prefix, weekDayName, monthName, monthDay, time, timeZoneAbbr, year]);
 }
 
-function composeTimeStamp(): string {
-    let prefix: string = "######"
-    let weekDayName: string = getTodaysWeekDay();
-    let monthName: string;
-    // return "123";
-    return concatWithDelimiter(" ", [prefix, weekDayName]);
+function geTodayMonthName(date: Date): string {
+    // let fullNameList: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    let shortNameList: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    let targetIndex: number = date.getMonth();
+    return (shortNameList[targetIndex]);
+}
+
+function getTodayWeekDayName(date: Date): string {
+    // let fullNameList: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let shortNameList: string[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let targetIndex: number = date.getDay();
+    return (shortNameList[targetIndex]);
+}
+
+function getTimeZoneAbbreviation(): string {
+    let timezone = require('moment-timezone');
+    let userTimeZone: string = timezone.tz.guess();
+    return timezone.tz(userTimeZone).zoneAbbr();
 }
 
 function concatWithDelimiter(delimiter: string, stringList: string[]): string {
@@ -43,13 +42,6 @@ function concatWithDelimiter(delimiter: string, stringList: string[]): string {
     return result.join("");
 }
 
-function getTodaysWeekDay(): string {
-    let weekDayList: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let weekDayShortenList: string[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    let weekDayNumber: number = new Date().getDay();
-    return (weekDayShortenList[weekDayNumber]);
-}
-
 function replaceEditorSelection(text: string) {
     const editor = vscode.window.activeTextEditor;
     const selections = editor.selections;
@@ -60,6 +52,16 @@ function replaceEditorSelection(text: string) {
             editBuilder.insert(selection.active, text);
         });
     });
+}
+
+export function activate(context: vscode.ExtensionContext) {
+    let disposable = [
+        vscode.commands.registerCommand('inserttimestamp.perform', () => {
+            let timeStamp: string = composeTimeStamp(new Date());
+            replaceEditorSelection(timeStamp);
+        })
+    ];
+    context.subscriptions.push(...disposable);
 }
 
 // this method is called when your extension is deactivated
