@@ -1,70 +1,70 @@
 {
-    "name": "inserttimestamp",
-    "displayName": "Insert Time Stamp",
-    "description": "Insert unix-shell-like date and time to current editor.",
-    "version": "1.1.1",
-    "publisher": "zvlad",
-    "engines": {
-        "vscode": "^1.5.0"
-    },
-    "categories": [
-        "Snippets",
-        "Other"
+  "name": "inserttimestamp",
+  "displayName": "Insert Time Stamp",
+  "description": "Insert unix-shell-like date and time to current editor.",
+  "version": "1.1.2",
+  "publisher": "zvlad",
+  "engines": {
+    "vscode": "^1.5.0"
+  },
+  "categories": [
+    "Snippets",
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:inserttimestamp.perform"
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "inserttimestamp.perform",
+        "title": "Insert Time Stamp"
+      }
     ],
-    "activationEvents": [
-        "onCommand:inserttimestamp.perform"
-    ],
-    "main": "./out/src/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "inserttimestamp.perform",
-                "title": "Insert Time Stamp"
-            }
-        ],
-        "keybindings": [
-            {
-                "command": "inserttimestamp.perform",
-                "key": "ctrl+f5",
-                "mac": "cmd+f5",
-                "when": "editorTextFocus"
-            }
-        ]
-    },
-    "scripts": {
-        "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
-        "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install"
-    },
-    "devDependencies": {
-        "typescript": "^1.8.5",
-        "vscode": "^0.11.0"
-    },
-    "dependencies": {
-        "moment-timezone": "^0.5.5"
-    },
-    "keywords": [
-        "VSCode",
-        "extension",
-        "timestamp"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/jvlad/InsertTimeStamp.vscode.ts"
-    },
-    "license": "MIT",
-    "author": {
-        "name": "Vlad Zamskoi",
-        "email": "v.zamskoi@gmail.com",
-        "url": "https://freeraven.com/"
-    },
-    "icon": "resources/icon.png",
-    "galleryBanner": {
-        "color": "#fafafa",
-        "theme": "light"
-    },
-    "bugs": {
-        "url": "https://github.com/jvlad/InsertTimeStamp.vscode.ts/issues"
-    },
-    "preview": true
+    "keybindings": [
+      {
+        "command": "inserttimestamp.perform",
+        "key": "ctrl+f5",
+        "mac": "cmd+f5",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+    "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "typescript": "^1.8.5",
+    "vscode": "^0.11.0"
+  },
+  "dependencies": {
+    "moment-timezone": "^0.5.5"
+  },
+  "keywords": [
+    "VSCode",
+    "extension",
+    "timestamp"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jvlad/InsertTimeStamp.vscode.ts"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Vlad Zamskoi",
+    "email": "v.zamskoi@gmail.com",
+    "url": "https://freeraven.com/"
+  },
+  "icon": "resources/icon.png",
+  "galleryBanner": {
+    "color": "#fafafa",
+    "theme": "light"
+  },
+  "bugs": {
+    "url": "https://github.com/jvlad/InsertTimeStamp.vscode.ts/issues"
+  },
+  "preview": true
 }
