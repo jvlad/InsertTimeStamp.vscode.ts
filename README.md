@@ -15,6 +15,7 @@ There are 2 options to install the extention
     * launch VS Code Quick Open (Ctrl+P)
     * execute the following command  
         `ext install inserttimestamp`
+    * hit green "Install" button next to **Insert Time Stamp** item in VSCode sidebar.
 
 1. via system command line
     * in your terminal run the following command  
