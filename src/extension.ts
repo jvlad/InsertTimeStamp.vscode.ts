@@ -1,5 +1,6 @@
 'use strict';
 import * as vscode from 'vscode';
+let moment = require('moment');
 
 function composeTimeStamp(date: Date): string {
     let prefix: string = "######"
@@ -9,7 +10,13 @@ function composeTimeStamp(date: Date): string {
     let time: string = date.toLocaleTimeString('en-US', { hour12: false });
     let timeZoneAbbr: string = getTimeZoneAbbreviation();
     let year: string = date.getFullYear().toString();
-    return concatWithDelimiter(" ", [prefix, weekDayName, monthName, monthDay, time, timeZoneAbbr, year]);
+    let configuration = vscode.workspace.getConfiguration('inserttimestamp');
+    if (configuration.has('format') && configuration.get('format') !== false) {
+        let format = configuration.get('format');
+        return moment(date).format(format);
+    } else {
+        return concatWithDelimiter(" ", [prefix, weekDayName, monthName, monthDay, time, timeZoneAbbr, year]);
+    }
 }
 
 function geTodayMonthName(date: Date): string {
@@ -54,12 +61,21 @@ function replaceEditorSelection(text: string) {
     });
 }
 
+function insertAlternativeFormat() {
+    const configuration = vscode.workspace.getConfiguration('inserttimestamp');
+    const format = configuration.has('alternative')
+        ? configuration.get('alternative')
+        : null; // A null format tells moment.js to output ISO 8601 format
+    replaceEditorSelection(moment().format(format));
+}
+
 export function activate(context: vscode.ExtensionContext) {
     let disposable = [
         vscode.commands.registerCommand('inserttimestamp.perform', () => {
             let timeStamp: string = composeTimeStamp(new Date());
             replaceEditorSelection(timeStamp);
-        })
+        }),
+        vscode.commands.registerCommand('inserttimestamp.alternative', insertAlternativeFormat)
     ];
     context.subscriptions.push(...disposable);
 }
