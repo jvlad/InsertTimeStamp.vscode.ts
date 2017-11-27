@@ -1,40 +1,40 @@
 'use strict';
 import * as vscode from 'vscode';
+const timezone = require('moment-timezone');
 
 function composeTimeStamp(date: Date): string {
-    let prefix: string = "######"
-    let weekDayName: string = getTodayWeekDayName(date);
-    let monthName: string = geTodayMonthName(date);
-    let monthDay: string = date.getDate().toString();
-    let time: string = date.toLocaleTimeString('en-US', { hour12: false });
-    let timeZoneAbbr: string = getTimeZoneAbbreviation();
-    let year: string = date.getFullYear().toString();
+    const prefix: string = "######"
+    const weekDayName: string = getTodayWeekDayName(date);
+    const monthName: string = getTodayMonthName(date);
+    const monthDay: string = date.getDate().toString();
+    const time: string = date.toLocaleTimeString('en-US', { hour12: false });
+    const timeZoneAbbr: string = getTimeZoneAbbreviation();
+    const year: string = date.getFullYear().toString();
     return concatWithDelimiter(" ", [prefix, weekDayName, monthName, monthDay, time, timeZoneAbbr, year]);
 }
 
-function geTodayMonthName(date: Date): string {
+function getTodayMonthName(date: Date): string {
     // let fullNameList: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    let shortNameList: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    let targetIndex: number = date.getMonth();
+    const shortNameList: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const targetIndex: number = date.getMonth();
     return (shortNameList[targetIndex]);
 }
 
 function getTodayWeekDayName(date: Date): string {
     // let fullNameList: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let shortNameList: string[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    let targetIndex: number = date.getDay();
+    const shortNameList: string[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const targetIndex: number = date.getDay();
     return (shortNameList[targetIndex]);
 }
 
-function getTimeZoneAbbreviation(): string {
-    let timezone = require('moment-timezone');
-    let userTimeZone: string = timezone.tz.guess();
+function getTimeZoneAbbreviation(): string {    
+    const userTimeZone: string = timezone.tz.guess();
     return timezone.tz(userTimeZone).zoneAbbr();
 }
 
 function concatWithDelimiter(delimiter: string, stringList: string[]): string {
     let result: string[] = [];
-    for (var i = 0; i < stringList.length - 1; i++) {
+    for (let i = 0; i < stringList.length - 1; i++) {
         result.push(stringList[i]);
         result.push(delimiter);
     }
@@ -57,7 +57,7 @@ function replaceEditorSelection(text: string) {
 export function activate(context: vscode.ExtensionContext) {
     let disposable = [
         vscode.commands.registerCommand('inserttimestamp.perform', () => {
-            let timeStamp: string = composeTimeStamp(new Date());
+            const timeStamp: string = composeTimeStamp(new Date());
             replaceEditorSelection(timeStamp);
         })
     ];
