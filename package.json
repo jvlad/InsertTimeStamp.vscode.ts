@@ -20,6 +20,10 @@
       {
         "command": "inserttimestamp.perform",
         "title": "Insert Time Stamp"
+      },
+      {
+        "command": "inserttimestamp.select",
+        "title": "Choose the language"
       }
     ],
     "keybindings": [
@@ -27,6 +31,12 @@
         "command": "inserttimestamp.perform",
         "key": "ctrl+f5",
         "mac": "cmd+f5",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "inserttimestamp.select",
+        "key": "ctrl+f6",
+        "mac": "cmd+f6",
         "when": "editorTextFocus"
       }
     ]
