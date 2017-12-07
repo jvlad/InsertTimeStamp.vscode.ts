@@ -2,8 +2,10 @@
 import * as vscode from 'vscode';
 import * as timezone from 'moment-timezone';
 import ISOCountries from './ISOCountries';
+
 let choosenLocale = 'en';
 const options = { weekday: 'short', year: 'numeric', hour12: false, month: 'short', day: 'numeric', hour:"numeric", minute:"numeric", second:"numeric" };
+
 function composeTimeStamp(date: Date, locale: string): string {
     const prefix: string = "######"
     const weekDayName: string = getTodayWeekDayName(date);
